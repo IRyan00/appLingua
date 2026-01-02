@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -13,9 +13,7 @@ import { QcmMode } from "@/components/game-modes/QcmMode";
 import { MissingWordMode } from "@/components/game-modes/MissingWordMode";
 import { ArrowLeft, Volume2 } from "lucide-react";
 
-export const dynamic = "force-dynamic";
-
-export default function SessionPage() {
+function SessionPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [config, setConfig] = useState<SessionConfig | null>(null);
@@ -279,5 +277,19 @@ export default function SessionPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export default function SessionPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center">
+          <div>Chargement...</div>
+        </div>
+      }
+    >
+      <SessionPageContent />
+    </Suspense>
   );
 }
