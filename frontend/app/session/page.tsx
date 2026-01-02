@@ -13,6 +13,8 @@ import { QcmMode } from "@/components/game-modes/QcmMode";
 import { MissingWordMode } from "@/components/game-modes/MissingWordMode";
 import { ArrowLeft, Volume2 } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default function SessionPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
