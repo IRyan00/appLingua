@@ -16,7 +16,6 @@ import {
   Volume2,
   VolumeX,
   ListChecks,
-  Shuffle,
   Play,
   ArrowLeftRight,
   Languages,

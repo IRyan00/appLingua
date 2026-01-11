@@ -10,7 +10,6 @@ import phrasesData from "@/data/phrases.json";
 import { getWordStats, getSelectionWeight } from "@/lib/stats";
 import { TranslationMode } from "@/components/game-modes/TranslationMode";
 import { QcmMode } from "@/components/game-modes/QcmMode";
-import { MissingWordMode } from "@/components/game-modes/MissingWordMode";
 import { ArrowLeft, Volume2 } from "lucide-react";
 
 function SessionPageContent() {
@@ -78,7 +77,7 @@ function SessionPageContent() {
       direction: direction === "1" ? "ru-fr" : "fr-ru",
       contentType: contentType as "mots" | "phrases",
       audio: audio as "avec" | "sans",
-      gameMode: gameMode as "traduction" | "qcm1" | "mot-manquant" | "qcm2",
+      gameMode: gameMode as "traduction" | "qcm1" | "qcm2",
     };
 
     setConfig(sessionConfig);
@@ -108,8 +107,7 @@ function SessionPageContent() {
         isValidated &&
         (config?.gameMode === "traduction" ||
           config?.gameMode === "qcm1" ||
-          config?.gameMode === "qcm2" ||
-          config?.gameMode === "mot-manquant")
+          config?.gameMode === "qcm2")
       ) {
         if (currentIndex < shuffledVocabulary.length - 1) {
           setCurrentIndex((prev) => prev + 1);
@@ -121,8 +119,7 @@ function SessionPageContent() {
       isValidated &&
       (config?.gameMode === "traduction" ||
         config?.gameMode === "qcm1" ||
-        config?.gameMode === "qcm2" ||
-        config?.gameMode === "mot-manquant")
+        config?.gameMode === "qcm2")
     ) {
       window.addEventListener("keydown", handleKeyDown);
     }
@@ -219,25 +216,10 @@ function SessionPageContent() {
               canGoNext={currentIndex < shuffledVocabulary.length - 1}
             />
           )}
-          Mode mot manquant
-          {config.gameMode === "mot-manquant" && (
-            <MissingWordMode
-              sourceText={sourceText}
-              targetText={targetText}
-              currentItem={currentItem}
-              direction={config.direction}
-              onNext={handleNext}
-              onValidate={handleValidate}
-              isValidated={isValidated}
-              isCorrect={isCorrect}
-              canGoNext={currentIndex < shuffledVocabulary.length - 1}
-            />
-          )}
           {/* Autres modes de jeu (à implémenter) */}
           {config.gameMode !== "traduction" &&
             config.gameMode !== "qcm1" &&
-            config.gameMode !== "qcm2" &&
-            config.gameMode !== "mot-manquant" && (
+            config.gameMode !== "qcm2" && (
               <div className="min-h-[200px] flex items-center justify-center border-2 border-dashed rounded-lg">
                 <div className="text-center text-muted-foreground">
                   Mode: {config.gameMode}
@@ -246,11 +228,10 @@ function SessionPageContent() {
                 </div>
               </div>
             )}
-          {/* Navigation (seulement si pas en mode traduction/QCM/mot manquant ou si pas validé) */}
+          {/* Navigation (seulement si pas en mode traduction/QCM ou si pas validé) */}
           {config.gameMode !== "traduction" &&
             config.gameMode !== "qcm1" &&
-            config.gameMode !== "qcm2" &&
-            config.gameMode !== "mot-manquant" && (
+            config.gameMode !== "qcm2" && (
               <div className="flex gap-4">
                 <Button
                   variant="outline"
