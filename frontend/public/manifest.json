@@ -1,0 +1,17 @@
+{
+  "name": "AppLingua - Apprendre le Russe",
+  "short_name": "AppLingua",
+  "description": "Application pour apprendre le vocabulaire russe",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#4ade80",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

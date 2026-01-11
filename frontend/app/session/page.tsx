@@ -175,7 +175,7 @@ function SessionPageContent() {
             <CardTitle className="text-center text-xl">
               Session d'apprentissage
             </CardTitle>
-            <div className="w-24" /> {/* Spacer pour centrer le titre */}
+            <div className="w-24" />
           </div>
           <div className="text-center text-sm text-muted-foreground">
             {currentIndex + 1} / {shuffledVocabulary.length}
@@ -191,7 +191,6 @@ function SessionPageContent() {
               </Button>
             )}
           </div>
-
           {/* Mode traduction */}
           {config.gameMode === "traduction" && (
             <TranslationMode
@@ -205,7 +204,6 @@ function SessionPageContent() {
               canGoNext={currentIndex < shuffledVocabulary.length - 1}
             />
           )}
-
           {/* Mode QCM */}
           {(config.gameMode === "qcm1" || config.gameMode === "qcm2") && (
             <QcmMode
@@ -221,8 +219,7 @@ function SessionPageContent() {
               canGoNext={currentIndex < shuffledVocabulary.length - 1}
             />
           )}
-
-          {/* Mode mot manquant */}
+          Mode mot manquant
           {config.gameMode === "mot-manquant" && (
             <MissingWordMode
               sourceText={sourceText}
@@ -236,7 +233,6 @@ function SessionPageContent() {
               canGoNext={currentIndex < shuffledVocabulary.length - 1}
             />
           )}
-
           {/* Autres modes de jeu (à implémenter) */}
           {config.gameMode !== "traduction" &&
             config.gameMode !== "qcm1" &&
@@ -250,7 +246,6 @@ function SessionPageContent() {
                 </div>
               </div>
             )}
-
           {/* Navigation (seulement si pas en mode traduction/QCM/mot manquant ou si pas validé) */}
           {config.gameMode !== "traduction" &&
             config.gameMode !== "qcm1" &&

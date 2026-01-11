@@ -151,7 +151,7 @@ export default function Home() {
               <ListChecks className="w-4 h-4" /> QCM
             </Button>
           </div>
-          <div className="flex gap-4">
+          {/* <div className="flex gap-4">
             <Button
               className="flex-1 h-14 border-1 border-accent"
               variant={gameMode === "mot-manquant" ? "default" : "outline"}
@@ -168,7 +168,7 @@ export default function Home() {
             >
               <Shuffle className="w-4 h-4" /> Remettre en ordre
             </Button>
-          </div>
+          </div> */}
 
           {/* Bouton "jouer" */}
           <div className="pt-2">
